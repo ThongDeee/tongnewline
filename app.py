@@ -45,11 +45,11 @@ def handle_message(event):
         response = requests.request("Get", url, headers=headers).json()
         if response['intent'] ==  "ขอเวลาปิดทำการ":
             return "ไม่มีวันปิดครับ"
-        else if response['intent'] ==  "ขอเวลาเปิดทำการ":
+        elif response['intent'] ==  "ขอเวลาเปิดทำการ":
             return "เปิดแข่งกับเซเว่นครับ"
-        else if response['intent'] ==  "ขายอะไรบ้าง":
+        elif response['intent'] ==  "ขายอะไรบ้าง":
             return "shoppee กับ lazada รวมกันยังไม่เท่าร้านเราครับ"
-        else if response['intent'] ==  "วิธีจัดส่ง":
+        elif response['intent'] ==  "วิธีจัดส่ง":
             return "Delivery ในไทยภายใน 12 ชม.ครับ "
         else: 
             return "ไม่เข้าใจคำถามครับ"
