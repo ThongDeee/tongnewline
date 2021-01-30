@@ -1,4 +1,6 @@
 import os
+import requests
+import json
 from flask import Flask, request, abort
 
 from linebot import (
