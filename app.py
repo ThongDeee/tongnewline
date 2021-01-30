@@ -37,8 +37,24 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    """ Here's all the messages will be handled and processed by the program """
-    line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
+    Awada = (event.message.text)
+    def getbotnoi(Awada):
+        url = f"https://openapi.botnoi.ai/botnoi/ecommerce?keyword={Awada}" 
+        headers = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTIwOTM5MjcsImlkIjoiNTJjYTJjODgtNDI2Ny00ZDEwLTkwNzktYmE4MGMxZWNhMzQ5IiwiaXNzIjoiZnloRHFJV1Npb3R4YmN3MkI4amZ5dUJBdUNHdFRLcm4iLCJuYW1lIjoiMTQzMy4wOCIsInBpYyI6Imh0dHBzOi8vcHJvZmlsZS5saW5lLXNjZG4ubmV0LzBoR1diUjVwYTVHSGhmS3pCcDdReG5MMk51RmhVb0JSNHdKMGxXR0h3dlFFMTJIVjRvWVJoVlNuOV9RMHh4SFZncE1VNEhHM3A1UWgxdyJ9.wfEGlqTBL1YQMsKWOEunptFk3mudSINF0ohdjTraCD0'
+}
+        response = requests.request("Get", url, headers=headers).json()
+        if response['intent'] ==  "ขอเวลาปิดทำการ":
+            return "ไม่มีวันปิดครับ"
+        else if response['intent'] ==  "ขอเวลาเปิดทำการ":
+            return "เปิดแข่งกับเซเว่นครับ"
+        else if response['intent'] ==  "ขายอะไรบ้าง":
+            return "shoppee กับ lazada รวมกันยังไม่เท่าร้านเราครับ"
+        else if response['intent'] ==  "วิธีจัดส่ง":
+            return "Delivery ในไทยภายใน 12 ชม.ครับ "
+        else: 
+            return "ไม่เข้าใจคำถามครับ"
+    Bunny = getbotnoi(Awada)
+    line_bot_api.reply_message(event.reply_token,TextSendMessage(text=f"{Bunny}"))
 
 
 if __name__ == "__main__":
